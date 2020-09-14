@@ -7,7 +7,7 @@ from dash.dependencies import Input, Output, State
 from dash.exceptions import PreventUpdate
 import dash_table
 
-import pandas as pd
+import pandas as pd 
 import plotly.express as px
 import urllib
 
@@ -793,6 +793,7 @@ def demo_callbacks(app):
                                 (html.Li("CARGO_COMISSAO_SIMBOLO: " +
                                          str(CARGO_COMISSAO_SIMBOLO))),
                                 (html.Li("CARGO_COMISSAO: " + str(CARGO_COMISSAO))),
+                                (html.Li("LOTACAO: " + str(LOTACAO))),
                                 (html.Li("LOTACAO_SUPERIOR_1: " +
                                          str(LOTACAO_SUPERIOR_1))),
                                 (html.Li("LOTACAO_SUPERIOR_2: " +
@@ -855,7 +856,7 @@ def demo_callbacks(app):
         ],
         [
             State("dropdown-dataset", "value"),
-            State("dropdown-segmentos", "value"),
+            State("dropdown-segmentos", "value")
         ]
     )
     def set_annotate_data(click, dataset, segmentos):
@@ -952,13 +953,13 @@ def demo_callbacks(app):
             return {"display": "grid", "grid-template-columns": "70% 30%"}, {"display": "none"}
 
     @app.callback(
-        [
-            Output("help", "style"),
-            Output("help-button", "children")
-        ],
-        [
-            Input("help-button", "n_clicks")
-        ]
+    [
+        Output("help", "style"),
+        Output("help-button", "children")
+    ],
+    [
+        Input("help-button", "n_clicks")
+    ]
     )
     def display_help(clicks):
         if clicks is None:
@@ -1022,7 +1023,7 @@ def demo_callbacks(app):
         [
             State("graph-3d-plot-tsne", "clickData"),
             State("graph-3d-plot-tsne", "selectedData"),
-            State("dropdown-label", "value"),
+            State("dropdown-label", "value")
         ]
     )
     def annotate_data(start, clickData, selectedData, label_value):
@@ -1112,7 +1113,7 @@ def demo_callbacks(app):
         ]
 
     )
-    def donwload_annotation(finish, return_click):
+    def donwload_annotation_page(finish, return_click):
         if return_click:
             return [
                 {"padding": "15px", "display": "grid", "grid-template-columns": "auto 400px",
@@ -1142,7 +1143,7 @@ def demo_callbacks(app):
         [
             Input("finish-button", "n_clicks"),
         ])
-    def reset(finish):
+    def reset_download(finish):
         return 0, 0
 
     @app.callback(
@@ -1154,7 +1155,7 @@ def demo_callbacks(app):
         [
             Input("end-button", "n_clicks"),
         ])
-    def reset(end):
+    def reset_end(end):
         return 0, 0, 0
 
     @app.callback(
